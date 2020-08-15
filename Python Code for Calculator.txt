@@ -1,0 +1,62 @@
+import matplotlib.pyplot as plt
+electricity = int(input("Kindly input the electricity used in a month in KWh: "))
+CO2_Elec = electricity * 12 * 0.19 # EF number given
+CO2_Elec_Convert =  CO2_Elec * 1000
+print ("Carbon emissions from electricity are", CO2_Elec_Convert,"kg of CO2",'\n')
+showering = int(input("Kindly input the number of times you shower in a week: "))
+showerMinutes = int(input ("Kindly input the number of minutes you take in the shower: "))
+CO2_Shower = showering * showerMinutes * 52 * 0.45  # Co2 lbs
+CO2_Shower_Convert = CO2_Shower * 0.453592
+print ("Carbon emissions from showering are", CO2_Shower_Convert,"kg of CO2",'\n')
+
+exit = False
+while (exit == False):
+    washer_hand = int(input("Kindly input the number '1' if you use the dishwasher and '2' if you hand wash your dishes: "))
+    if (washer_hand ==1 or washer_hand == 2):
+      exit = True
+    else:
+      exit = False
+    if (washer_hand ==1):
+        CO2_dishwasher = 0.389 * 365 # kg CO2 p day
+        CO2_handwash = 0 
+        print("Yearly carbon emissions from the dishwasher are",CO2_dishwasher,"kg of CO2",'\n')
+    else:
+        CO2_handwash = 0.43 * 365
+        CO2_dishwasher = 0
+        print("Yearly carbon emissions from handwashing dishes are",CO2_handwash,"kg of CO2",'\n')
+Water = CO2_dishwasher + CO2_handwash + CO2_Shower_Convert
+naturalGas = int(input("Kindly input the amount of Natural gas you use in a day in therm: "))
+CO2_NatGas = naturalGas * 0.005919 * 365 # yearly
+CO2_NatGas_Convert = CO2_NatGas * 1000 
+print("Carbon emissions from yearly natural gas usage are",CO2_NatGas_Convert,"kg of CO2",'\n')
+print("If you do not use a car please select any number that is not '1' or '2'.")
+PetrolOrDiesel = int(input("Kindly select '1' if your vehicle runs on petrol and '2' if your vehicle runs on Diesel: "))
+if (PetrolOrDiesel ==1 ):
+    Petrol_Litres = int(input("Kindly input the amount of litres of petrol you usually use to fill up your tank: "))
+    CO2Petrol = Petrol_Litres * 0.00222 * 26
+    CO2Petrol_Convert = CO2Petrol* 1000
+    print("Assuming you fill up your tank every two weeks, your carbon emissions over the entire year are: ", CO2Petrol_Convert,"kg of CO2",'\n')
+    Fuel = CO2Petrol_Convert
+    CO2Diesel = 0
+elif (PetrolOrDiesel ==2):
+    DieselLitres = int(input("Kindly input the amount of litres of diesel you usually use to fill up your tank: "))
+    CO2Diesel = DieselLitres * 0.00268 * 26
+    CO2Diesel_Convert = CO2Diesel * 1000
+    print("Assuming you fill up your tank every two weeks, your carbon emissions over the entire year are: ", CO2Diesel_Convert,"kg of CO2",'\n')
+    Fuel = CO2Diesel_Convert
+    CO2Petrol = 0
+else:
+    print("0")
+    CO2Petrol = 0
+    Fuel = 0
+    
+
+# Code slightly adjusted fromhttps://greensuburb.000webhostapp.com
+labels = 'Electricity', 'Water', 'Natural Gas', 'Fuel'
+sizes = [CO2_Elec_Convert, Water, CO2_NatGas_Convert, Fuel]
+colors = ['gold', 'lightskyblue', 'lightcoral', 'yellowgreen']
+plt.pie(sizes, labels=labels, colors=colors,
+autopct='%1.1f%%', shadow=True, startangle=140)
+plt.axis('equal')
+plt.show()
+
