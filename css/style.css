@@ -1,0 +1,68 @@
+/* import fonts from fonts.css file*/
+@import url(./fonts.css);
+
+/*import variables*/
+@import url(./partials/_variables.css);
+
+/* import global styling */ 
+@import url(./partials/_global.css);
+
+/*start navigation*/
+.header_area .main-menu .navbar .navbar-brand{
+    padding: 0 2rem 0 5rem;
+  
+}
+
+.header_area .main-menu .navbar{
+    padding: 1rem 20rem;
+    background-color: hsl(147, 44%, 95%);
+    filter: brightness(0.9);
+    
+    
+}
+
+.header_area .main-menu .nav-item .nav-link{
+    font: normal 700 15px/2px var(--roboto);
+    text-transform: uppercase;
+    padding: 1.7rem;
+    color: var(--primary-color2);
+
+}
+
+.header_area .main-menu .navbar-nav a:hover{
+    background: var(--gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+}
+
+/*end navigation*/
+
+
+/*Start about area*/
+
+.site-main .about-area{
+    padding: 8rem 5rem;
+}
+
+.site-main .about-area .about-title h2> span{
+    display: block;
+    font: normal bold 49px/60px var(--roboto);
+    
+}
+
+.site-main .about-area .about-title .paragraph>p{
+    padding: .4rem 0;
+    color: var(--text-color);
+    font-size: large ;
+}
+
+.site-main .about-area .about-image{
+    padding-top: 10px;
+}
+/*end About area*/
+
+
+/*WholePage Default Size*/
+
